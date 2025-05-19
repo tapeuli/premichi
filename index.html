@@ -165,79 +165,84 @@
     </div>
     
     <script>
-        // Data produk (bisa juga diambil dari API/database)
-        const products = {
-            produk1: {
-                name: "Netflix 1 Bulan 1U",
-                category: "Streaming",
-                image: "p1.png",
-                description: "Deskripsi lengkap produk 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-                price: "Rp 40.000",
-                specs: ["Ukuran: L", "Warna: Biru", "Bahan: Polyester"]
-            },
-            produk2: {
-                name: "Nama Produk 2",
-                category: "Kategori Produk",
-                image: "p2.png",
-                description: "Deskripsi lengkap produk 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-                price: "Rp 150.000",
-                specs: ["Ukuran: L", "Warna: Biru", "Bahan: Polyester"]
-            },
-            produk3: {
-                name: "Nama Produk 3",
-                category: "Kategori Produk",
-                image: "p3.png",
-                description: "Deskripsi lengkap produk 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-                price: "Rp 150.000",
-                specs: ["Ukuran: L", "Warna: Biru", "Bahan: Polyester"]
-            }
-        };
-        
-        // Fungsi untuk membuka modal produk
-        function openProductModal(productId) {
-            const product = products[productId];
-            const modal = document.getElementById('productModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            // Pesan default untuk WhatsApp
-            const whatsappMessage = `Halo, saya tertarik dengan produk ${product.name} (${product.price}) yang ada di website Premichi. Apakah masih tersedia?`;
-            const whatsappNumber = '6283128734012';
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-            
-            modalContent.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-detail-image">
-                <div class="product-detail-info">
-                    <h2>${product.name}</h2>
-                    <p class="product-category">${product.category}</p>
-                    <p class="price">${product.price}</p>
-                    <p>${product.description}</p>
-                    <h3>Spesifikasi:</h3>
-                    <ul>
-                        ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
-                    </ul>
-                    <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-6.29-3.423c-.545 1.492-.792 2.217-1.102 2.064-.309-.153-.596-.628-1.102-2.064-.505-1.436-.675-1.891.103-2.014.779-.123 1.63.742 1.63.742s.191-.245.494-.245c.302 0 .494.112.494.245 0 0-.873.89-.873 1.342 0 .453.873.368.873.368" fill="currentColor"/>
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2 22l5-1.338A9.96 9.96 0 0 0 12 22" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                        Beli Sekarang
-                    </a>
-                </div>
-            `;
-            
-            modal.style.display = "block";
+    // Data produk yang diperbarui agar sesuai dengan tampilan card
+    const products = {
+        produk1: {
+            name: "Netflix 1 Bulan 1U",
+            category: "Streaming",
+            image: "p1.png",
+            description: "Langganan Netflix premium 1 bulan untuk 1 user. Garansi 30 hari.",
+            price: "Rp 40.000",
+            specs: [
+                "Tipe: Private Account",
+                "Durasi: 1 Bulan", 
+                "Garansi: 30 Hari",
+                "Support: 24/7"
+            ]
+        },
+        produk2: {
+            name: "Vidio Platinum Private 1 Bulan",
+            category: "Streaming",
+            image: "p2.png",
+            description: "Langganan Vidio Platinum 1 bulan akun private. Bisa digunakan di semua device.",
+            price: "Rp 35.000",
+            specs: [
+                "Tipe: Private Account",
+                "Fitur: Platinum (no ads)", 
+                "Durasi: 1 Bulan",
+                "Multi Device"
+            ]
+        },
+        produk3: {
+            name: "Capcut 1 Bulan Private",
+            category: "Editing",
+            image: "p3.png",
+            description: "Akun Capcut Pro premium 1 bulan dengan semua fitur unlocked.",
+            price: "Rp 25.000",
+            specs: [
+                "Tipe: Private Account",
+                "Akses: All Features", 
+                "Durasi: 1 Bulan",
+                "Garansi: 30 Hari"
+            ]
+        }
+    };
+    
+    // Fungsi untuk membuka modal produk
+    function openProductModal(productId) {
+        const product = products[productId];
+        if (!product) {
+            console.error("Produk tidak ditemukan:", productId);
+            return;
         }
         
-        // Fungsi untuk menutup modal
-        function closeModal() {
-            document.getElementById('productModal').style.display = "none";
-        }
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
         
-        // Tutup modal ketika klik di luar konten modal
-        window.onclick = function(event) {
-            const modal = document.getElementById('productModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
+        // Pesan default untuk WhatsApp
+        const whatsappMessage = `Halo, saya tertarik dengan produk ${product.name} (${product.price}) yang ada di website Premichi. Apakah masih tersedia?`;
+        const whatsappNumber = '6283128734012';
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        modalContent.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-detail-image">
+            <div class="product-detail-info">
+                <h2>${product.name}</h2>
+                <p class="product-category">${product.category}</p>
+                <p class="price">${product.price}</p>
+                <p>${product.description}</p>
+                <h3>Detail Produk:</h3>
+                <ul>
+                    ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
+                </ul>
+                <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
+                    <!-- SVG WhatsApp icon -->
+                    Beli Sekarang
+                </a>
+            </div>
+        `;
+        
+        modal.style.display = "block";
             }
         }
     </script>
