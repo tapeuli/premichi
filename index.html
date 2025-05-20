@@ -164,7 +164,7 @@
         </div>
     </div>
     
-    <script>
+<script>
     // Data produk yang diperbarui agar sesuai dengan tampilan card
     const products = {
         produk1: {
@@ -220,8 +220,8 @@
         const modalContent = document.getElementById('modalContent');
         
         // Pesan default untuk WhatsApp
-        const whatsappMessage = `Halo, saya tertarik dengan produk ${product.name} (${product.price}) yang ada di website Premichi. Apakah masih tersedia?`;
-        const whatsappNumber = '6283128734012';
+        const whatsappMessage = `Halo kak, saya mau beli ${product.name} (${product.price}) yang ada di website Premichi. Apakah masih ada?`;
+        const whatsappNumber = '6283161501886';
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         modalContent.innerHTML = `
@@ -236,24 +236,15 @@
                     ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
                 </ul>
                 <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
-                    <!-- SVG WhatsApp icon -->
                     Beli Sekarang
                 </a>
             </div>
-            `;
+        `;
         
         modal.style.display = "block";
     }
- 
-    <script>
-    // ... (data products tetap sama seperti sebelumnya)
-
-    // Fungsi untuk membuka modal produk
-    function openProductModal(productId) {
-        // ... (implementasi sebelumnya tetap sama)
-    }
     
-    // Fungsi untuk menutup modal (yang sebelumnya belum ada)
+    // Fungsi untuk menutup modal
     function closeModal() {
         document.getElementById('productModal').style.display = "none";
     }
@@ -265,4 +256,4 @@
             closeModal();
         }
     }
-    </script>
+</script>
