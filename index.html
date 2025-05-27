@@ -5,8 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premichi - Produk Kami</title>
     <style>
-        /* [Previous CSS remains the same until .modal-content] */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff9f0;
+        }
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa3a3, #ffd166);
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+            border-bottom: 5px solid #ffd166;
+            height: 300px; /* Adjust height as needed for your photo */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid #ffd166;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            border-bottom: 3px solid #ffd166;
+        }
+        .product-info {
+            padding: 1.2rem;
+            background: linear-gradient(to bottom, #ffffff, #fff9f0);
+        }
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ff6b6b;
+            font-size: 1.1rem;
+        }
+        .product-category {
+            color: #ff9e00;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
         
+        /* Modal untuk tampilan detail produk */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,214,102,0.8);
+            backdrop-filter: blur(5px);
+        }
         .modal-content {
             background-color: #fff9f0;
             margin: 5% auto;
@@ -18,67 +96,239 @@
             border: 4px solid #ff6b6b;
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
             animation: bounceIn 0.5s;
-            max-height: 80vh; /* Limit height to 80% of viewport */
-            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 80vh;
+            overflow-y: auto;
         }
-        
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .close-btn {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #ff6b6b;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .close-btn:hover {
+            transform: rotate(90deg);
+            color: #ff0000;
+        }
         .product-detail {
             display: flex;
             gap: 2rem;
-            flex-direction: column; /* Stack vertically on small screens */
         }
-        
-        @media (min-width: 768px) {
-            .product-detail {
-                flex-direction: row; /* Side by side on larger screens */
-            }
-        }
-        
         .product-detail-image {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            max-height: 300px;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             border-radius: 10px;
             border: 3px solid #ffd166;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin: 0 auto; /* Center the image */
         }
-        
         .product-detail-info {
             flex: 1;
-            overflow-y: auto; /* Enable scrolling for long content */
-            max-height: 60vh; /* Limit height */
+            position: relative;
+            padding-bottom: 80px; /* Ruang untuk tombol WhatsApp */
         }
-        
+        .product-detail-info h2 {
+            color: #ff6b6b;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        .product-detail-info .price {
+            font-size: 1.5rem;
+            color: #06d6a0;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
         .product-detail-info ul {
-            max-height: 200px; /* Limit height of specs list */
-            overflow-y: auto; /* Enable scrolling */
-            padding-right: 10px; /* Add space for scrollbar */
+            padding-left: 1.2rem;
+        }
+        .product-detail-info li {
+            margin-bottom: 0.5rem;
+            color: #5f6caf;
+        }
+        .whatsapp-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            text-decoration: none;
+            width: fit-content;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+        }
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
         }
         
-        /* Custom scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Footer dan Social Media */
+        footer {
+            background: linear-gradient(135deg, #5f6caf, #3a4a8a);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 5px solid #ffd166;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd166;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #ff6b6b;
-            border-radius: 10px;
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff4757;
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd166, #ff9e00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .social-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .social-icon img {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
+        }
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #d8d8d8;
         }
         
-        /* [Rest of the previous CSS remains the same] */
+        /* Floating decoration elements */
+        .floating {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffd166, transparent 70%);
+            top: 10%;
+            left: 5%;
+        }
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff6b6b, transparent 70%);
+            bottom: 15%;
+            right: 8%;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 140px solid #06d6a0;
+            opacity: 0.1;
+            top: 60%;
+            left: 10%;
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <body>
-    <!-- [Previous HTML remains the same until the script section] -->
+    <!-- Floating decorative elements -->
+    <div class="floating circle-1"></div>
+    <div class="floating circle-2"></div>
+    <div class="floating triangle"></div>
+    
+  <header>
+        <!-- You can add your photo here -->
+        <img src="premichi-bg.png" alt="Premichi Header" class="header-image">
+    </header>
+    
+    <div class="container">
+        <div class="product-grid">
+            
+            <!-- Produk 1 -->
+            <div class="product-card">
+                <img src="p1.png" alt="Produk 1" class="product-image" onclick="openProductModal('produk1')">
+                <div class="product-info">
+                    <div class="product-name">Netflix 1 Bulan 1U</div>
+                    <div class="product-category">🎬 Streaming</div>
+                </div>
+            </div>
+            
+            <!-- Produk 2 -->
+            <div class="product-card">
+                <img src="p2.png" alt="Produk 2" class="product-image" onclick="openProductModal('produk2')">
+                <div class="product-info">
+                    <div class="product-name">Vidio Platinum Private 1 Bulan</div>
+                    <div class="product-category">🎥 Streaming</div>
+                </div>
+            </div>
+
+            <!-- Produk 3 -->
+            <div class="product-card">
+                <img src="p3.png" alt="Produk 3" class="product-image" onclick="openProductModal('produk3')">
+                <div class="product-info">
+                    <div class="product-name">Capcut 1 Bulan Private</div>
+                    <div class="product-category">✂️ Editing</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Modal untuk detail produk -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="product-detail" id="modalContent">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer dengan Social Media -->
+    <footer>
+        <h3>Ikuti Kami</h3>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@premichi_" class="social-icon" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com/premichi" class="social-icon" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Premichi. All Rights Reserved. 💖
+        </div>
+    </footer>
     
     <script>
     // Data produk yang diperbarui agar sesuai dengan tampilan card
@@ -152,31 +402,37 @@
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         modalContent.innerHTML = `
-            <div class="product-detail">
-                <img src="${product.image}" alt="${product.name}" class="product-detail-image">
-                <div class="product-detail-info">
-                    <h2>${product.name}</h2>
-                    <p class="product-category">🏷️ ${product.category}</p>
-                    <p class="price">💲 ${product.price}</p>
-                    <p>${product.description}</p>
-                    <h3>✨ Detail Produk:</h3>
-                    <ul>
-                        ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
-                    </ul>
-                    <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
-                        📱 Beli Sekarang
-                    </a>
-                </div>
+            <img src="${product.image}" alt="${product.name}" class="product-detail-image">
+            <div class="product-detail-info">
+                <h2>${product.name}</h2>
+                <p class="product-category">🏷️ ${product.category}</p>
+                <p class="price">💲 ${product.price}</p>
+                <p>${product.description}</p>
+                <h3>✨ Detail Produk:</h3>
+                <ul>
+                    ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
+                </ul>
+                <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
+                    📱 Beli Sekarang
+                </a>
             </div>
         `;
         
         modal.style.display = "block";
-        
-        // Scroll to top when modal opens
-        modalContent.scrollTop = 0;
     }
     
-    // [Rest of the JavaScript remains the same]
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        document.getElementById('productModal').style.display = "none";
+    }
+    
+    // Tutup modal ketika klik di luar konten modal
+    window.onclick = function(event) {
+        const modal = document.getElementById('productModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
     </script>
 </body>
 </html>
