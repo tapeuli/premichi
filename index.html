@@ -340,8 +340,8 @@
     
     <!-- Modal untuk detail produk -->
     <div id="productModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
         <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="product-detail" id="modalContent">
                 <!-- Konten akan diisi oleh JavaScript -->
             </div>
@@ -463,7 +463,7 @@
     }
     
     // Tutup modal ketika klik di luar konten modal
-    window.onclick = function(event) {
+     window.onclick = function(event) {
         const modal = document.getElementById('productModal');
         if (event.target == modal) {
             closeModal();
@@ -473,7 +473,7 @@
     // Handle touch events untuk mobile
     document.addEventListener('touchstart', function(event) {
         const modal = document.getElementById('productModal');
-        if (modal.style.display === "block" && !modal.contains(event.target) {
+        if (modal.style.display === "block" && !modal.querySelector('.modal-content').contains(event.target)) {
             closeModal();
         }
     }, {passive: true});
