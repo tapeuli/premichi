@@ -2,43 +2,53 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Premichi - Produk Kami</title>
     <style>
+        /* Font yang mudah dibaca untuk semua perangkat */
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+                        'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff9f0;
+            line-height: 1.6;
             -webkit-text-size-adjust: 100%;
         }
+        
+        /* Header */
         header {
             background: linear-gradient(135deg, #ff6b6b, #ffa3a3, #ffd166);
             padding: 0;
             text-align: center;
             box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
             border-bottom: 5px solid #ffd166;
-            height: 150px; /* Lebih pendek untuk mobile */
+            height: 150px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        
         .header-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+        
+        /* Container dan Grid Produk */
         .container {
             max-width: 1200px;
             margin: 1rem auto;
             padding: 0 1rem;
         }
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1rem;
         }
+        
         .product-card {
             background: white;
             border-radius: 12px;
@@ -47,10 +57,12 @@
             transition: all 0.3s ease;
             border: 2px solid #ffd166;
         }
+        
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
         }
+        
         .product-image {
             width: 100%;
             height: 120px;
@@ -58,23 +70,26 @@
             cursor: pointer;
             border-bottom: 2px solid #ffd166;
         }
+        
         .product-info {
             padding: 0.8rem;
             background: linear-gradient(to bottom, #ffffff, #fff9f0);
         }
+        
         .product-name {
-            font-weight: bold;
+            font-weight: 600; /* Sedikit lebih tebal untuk keterbacaan */
             margin-bottom: 0.3rem;
             color: #ff6b6b;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
+        
         .product-category {
             color: #ff9e00;
             font-size: 0.8rem;
-            font-weight: bold;
+            font-weight: 600;
         }
         
-        /* Modal untuk tampilan detail produk */
+        /* Modal Detail Produk */
         .modal {
             display: none;
             position: fixed;
@@ -88,6 +103,7 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
+        
         .modal-content {
             background-color: #fff9f0;
             margin: 2% auto;
@@ -102,10 +118,12 @@
             max-height: 90vh;
             overflow-y: auto;
         }
+        
         @keyframes bounceIn {
             0% { transform: scale(0.95); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
+        
         .close-btn {
             position: fixed;
             right: 1rem;
@@ -124,11 +142,13 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 101;
         }
+        
         .product-detail {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
+        
         .product-detail-image {
             width: 100%;
             height: 200px;
@@ -137,34 +157,47 @@
             border: 2px solid #ffd166;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
+        
         .product-detail-info {
             flex: 1;
             position: relative;
             padding-bottom: 70px;
         }
+        
         .product-detail-info h2 {
             color: #ff6b6b;
             margin-top: 0;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
         }
+        
         .product-detail-info .price {
             font-size: 1.3rem;
             color: #06d6a0;
-            font-weight: bold;
+            font-weight: 700;
             margin: 0.5rem 0;
         }
+        
+        .product-detail-info p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
         .product-detail-info ul {
-            padding-left: 1rem;
+            padding-left: 1.2rem;
             margin: 0.5rem 0;
         }
+        
         .product-detail-info li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: #5f6caf;
             font-size: 0.9rem;
-            line-height: 1.4;
+            line-height: 1.5;
         }
+        
         .whatsapp-btn {
-            padding: 0.7rem 1.2rem;
+            padding: 0.8rem 1.2rem;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border: none;
@@ -174,7 +207,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            font-weight: bold;
+            font-weight: 600;
             margin: 1rem auto 0;
             text-decoration: none;
             width: 90%;
@@ -187,12 +220,8 @@
             right: 5%;
             max-width: 400px;
         }
-        .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(37, 211, 102, 0.4);
-        }
         
-        /* Footer dan Social Media */
+        /* Footer */
         footer {
             background: linear-gradient(135deg, #5f6caf, #3a4a8a);
             color: white;
@@ -201,20 +230,24 @@
             margin-top: 2rem;
             border-top: 4px solid #ffd166;
         }
+        
         footer h3 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
             color: #ffd166;
+            font-weight: 600;
         }
+        
         .social-media {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-top: 0.8rem;
         }
+        
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ffd166, #ff9e00);
             display: flex;
@@ -223,70 +256,56 @@
             transition: all 0.3s ease;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        .social-icon:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
+        
         .social-icon img {
             width: 22px;
             height: 22px;
             filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
         }
+        
         .copyright {
             margin-top: 1rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #d8d8d8;
         }
         
-        /* Floating decoration elements */
-        .floating {
-            position: fixed;
-            z-index: -1;
-            opacity: 0.5;
-        }
-        .circle-1 {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #ffd166, transparent 70%);
-            top: 10%;
-            left: -50px;
-        }
-        .circle-2 {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #ff6b6b, transparent 70%);
-            bottom: 10%;
-            right: -40px;
-        }
-        
-        /* Media queries untuk responsif */
+        /* Responsive Design */
         @media (min-width: 768px) {
             header {
                 height: 200px;
             }
+            
             .product-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 1.5rem;
             }
+            
             .product-image {
                 height: 150px;
             }
+            
             .product-name {
                 font-size: 1rem;
             }
+            
             .modal-content {
                 width: 80%;
                 padding: 2rem;
             }
+            
             .product-detail {
                 flex-direction: row;
             }
+            
             .product-detail-image {
                 width: 250px;
                 height: 250px;
             }
+            
+            .product-detail-info h2 {
+                font-size: 1.7rem;
+            }
+            
             .whatsapp-btn {
                 position: sticky;
                 bottom: 0;
@@ -299,10 +318,6 @@
     </style>
 </head>
 <body>
-    <!-- Floating decorative elements -->
-    <div class="floating circle-1"></div>
-    <div class="floating circle-2"></div>
-    
     <header>
         <img src="premichi-bg.png" alt="Premichi Header" class="header-image">
     </header>
@@ -340,8 +355,8 @@
     
     <!-- Modal untuk detail produk -->
     <div id="productModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="product-detail" id="modalContent">
                 <!-- Konten akan diisi oleh JavaScript -->
             </div>
@@ -453,17 +468,17 @@
         `;
         
         modal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Mencegah scroll di body saat modal terbuka
+        document.body.style.overflow = "hidden";
     }
     
     // Fungsi untuk menutup modal
     function closeModal() {
         document.getElementById('productModal').style.display = "none";
-        document.body.style.overflow = "auto"; // Mengembalikan scroll di body
+        document.body.style.overflow = "auto";
     }
     
     // Tutup modal ketika klik di luar konten modal
-     window.onclick = function(event) {
+    window.onclick = function(event) {
         const modal = document.getElementById('productModal');
         if (event.target == modal) {
             closeModal();
@@ -473,7 +488,7 @@
     // Handle touch events untuk mobile
     document.addEventListener('touchstart', function(event) {
         const modal = document.getElementById('productModal');
-        if (modal.style.display === "block" && !modal.querySelector('.modal-content').contains(event.target)) {
+        if (modal.style.display === "block" && !modal.contains(event.target) {
             closeModal();
         }
     }, {passive: true});
