@@ -333,10 +333,15 @@
             description: "🎉 Langganan Netflix premium 1 bulan untuk 1 user. Nikmati tontonan tanpa batas dengan kualitas terbaik!",
             price: "Rp 40.000",
             specs: [
-                "🎯 Tipe: Private Account",
-                "⏳ Durasi: 1 Bulan", 
-                "🛡️ Garansi: 30 Hari",
-                "🛟 Support: 24/7"
+                "🎯 Tipe: Sharing Account",
+                "⏳ Durasi: 27–28 hari", 
+                "⚠️ Wajib kirim format device & bukti login (tanpa crop) saat order. Toleransi max 3x24 jam",
+                "Tidak bisa pindah device, kecuali rusak",
+                "Akun wiped sisa durasi ≤14 hari: tidak ada refund",
+                "Jika muncul notif household, hubungi seller. Jangan logout! Logout = denda Rp2.000",
+                "Bisa digunakan di luar negeri",
+                "Tidak boleh dipakai di aplikasi rave",
+                "Jika terdeteksi login lebih dari 1, diberi 1x kesempatan login ulang. Melanggar = akun ditarik, no refund",
             ]
         },
         produk2: {
@@ -346,10 +351,15 @@
             description: "🌟 Langganan Vidio Platinum 1 bulan akun private. Bebas iklan dan bisa digunakan di semua device favoritmu!",
             price: "Rp 35.000",
             specs: [
-                "🎯 Tipe: Private Account",
-                "✨ Fitur: Platinum (no ads)", 
+                "🎯 Private, log in max 1 device",
+                "🖥️ Bisa log in di IOS/ANDROID/LAPTOP/TV",
                 "⏳ Durasi: 1 Bulan",
-                "📱 Multi Device"
+                "🛡️ Garansi: 30 Hari",
+                "💎 VIP Fitur: Nonton original series & konten sport lainnya",
+                "Bebas nonton tayangan olahraga seperti: UCL, UEL, NBA, BRI Liga 1, Liga 2, Bein (1 & 3), WTA, IBL, dll",
+                "Vidio Original Series, seperti: Pertaruhan The Series, Married With Senior, dll",
+                "Serial Korea, seperti: Eve, Cleaning Up, Penthouse 1-3, Descendants Of The Sun, The World of The Married dll. Film Hollywood dan lokal, seperti: Chinese Zodiac, Spy Family, Spider-Man, John Wick, Kungfu Panda, The Raid, Keluarga Cemara, Gundala, Habibie Ainun. dll",
+                "TV International, seperti: Aljazeera, NewsAsia, NHK World Japan, DW English, SEA Today, ABC Australia, Fashion TV, dll",
             ]
         },
         produk3: {
@@ -359,8 +369,9 @@
             description: "✂️ Akun Capcut Pro premium 1 bulan dengan semua fitur keren terbuka! Buat videomu semakin menarik!",
             price: "Rp 25.000",
             specs: [
-                "🎯 Tipe: Private Account",
-                "💎 Akses: All Features", 
+                "🧑‍🧑‍🧒‍🧒 Private",
+                "🖥️ Bisa Log-in semua device (MAX 3 DEVICE)",
+                "💎 VIP fitur: Unlock all pro templates for unlimited times, Space 100GB, Ad free", 
                 "⏳ Durasi: 1 Bulan",
                 "🛡️ Garansi: 30 Hari"
             ]
@@ -379,8 +390,8 @@
         const modalContent = document.getElementById('modalContent');
         
         // Pesan default untuk WhatsApp
-        const whatsappMessage = `Halo Premichi! 😊 Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
-        const whatsappNumber = '6283128734012';
+        const whatsappMessage = `Halo kak! Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
+        const whatsappNumber = '6283161501886';
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         modalContent.innerHTML = `
