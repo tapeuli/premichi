@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremiAw - Solusi Asuransi Digital</title>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .cta-button {
+            background-color: #3498db;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #7f8c8d;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        /* Produk Section */
+        .produk {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+        
+        .produk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .produk-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .produk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .produk-img {
+            height: 200px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .produk-content {
+            padding: 1.5rem;
+        }
+        
+        .produk-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .produk-content p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Premi<span>Aw</span></div>
+            <ul class="nav-links">
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Produk</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#" class="cta-button">Masuk/Daftar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Asuransi Digital untuk Kebutuhan Masa Kini</h1>
+        <p>PremiAw memberikan solusi asuransi yang mudah, cepat, dan terjangkau untuk melindungi Anda dan keluarga.</p>
+        <div class="hero-buttons">
+            <a href="#" class="cta-button">Lihat Produk</a>
+            <a href="#" class="cta-button" style="background-color: #2c3e50;">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- Produk Section -->
+    <section class="produk">
+        <div class="section-title">
+            <h2>Produk Kami</h2>
+            <p>Pilih perlindungan yang sesuai dengan kebutuhan Anda</p>
+        </div>
+        <div class="produk-grid">
+            <div class="produk-card">
+                <div class="produk-img">Asuransi Kendaraan</div>
+                <div class="produk-content">
+                    <h3>Asuransi Mobil</h3>
+                    <p>Perlindungan komprehensif untuk kendaraan Anda dengan premi terjangkau.</p>
+                    <a href="#" class="cta-button">Detail</a>
+                </div>
+            </div>
+            <div class="produk-card">
+                <div class="produk-img">Asuransi Kesehatan</div>
+                <div class="produk-content">
+                    <h3>Asuransi Kesehatan</h3>
+                    <p>Proteksi kesehatan untuk Anda dan keluarga dengan jaringan rumah sakit luas.</p>
+                    <a href="#" class="cta-button">Detail</a>
+                </div>
+            </div>
+            <div class="produk-card">
+                <div class="produk-img">Asuransi Jiwa</div>
+                <div class="produk-content">
+                    <h3>Asuransi Jiwa</h3>
+                    <p>Memberikan perlindungan finansial untuk masa depan orang-orang terkasih.</p>
+                    <a href="#" class="cta-button">Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>PremiAw</h3>
+                <p>Solusi asuransi digital untuk melindungi apa yang paling berharga bagi Anda.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Produk</h3>
+                <ul>
+                    <li><a href="#">Asuransi Kendaraan</a></li>
+                    <li><a href="#">Asuransi Kesehatan</a></li>
+                    <li><a href="#">Asuransi Jiwa</a></li>
+                    <li><a href="#">Asuransi Perjalanan</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Perusahaan</h3>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Hubungi Kami</h3>
+                <ul>
+                    <li>Email: info@premiaw.id</li>
+                    <li>Telepon: (021) 1234567</li>
+                    <li>Alamat: Jakarta, Indonesia</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 PremiAw.id - All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
