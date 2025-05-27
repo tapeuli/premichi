@@ -6,16 +6,23 @@
     <title>Premichi - Produk Kami</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #fff9f0;
         }
         header {
-            background-color: #ff9d00;
+            background: linear-gradient(135deg, #ff6b6b, #ffa3a3, #ffd166);
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+            border-bottom: 5px solid #ffd166;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         .container {
             max-width: 1200px;
@@ -29,30 +36,37 @@
         }
         .product-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid #ffd166;
         }
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
         }
         .product-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
             cursor: pointer;
+            border-bottom: 3px solid #ffd166;
         }
         .product-info {
-            padding: 1rem;
+            padding: 1.2rem;
+            background: linear-gradient(to bottom, #ffffff, #fff9f0);
         }
         .product-name {
             font-weight: bold;
             margin-bottom: 0.5rem;
+            color: #ff6b6b;
+            font-size: 1.1rem;
         }
         .product-category {
-            color: #666;
+            color: #ff9e00;
             font-size: 0.9rem;
+            font-weight: bold;
         }
         
         /* Modal untuk tampilan detail produk */
@@ -64,23 +78,39 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(255,214,102,0.8);
+            backdrop-filter: blur(5px);
         }
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fff9f0;
             margin: 5% auto;
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 15px;
             width: 80%;
             max-width: 800px;
             position: relative;
+            border: 4px solid #ff6b6b;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            animation: bounceIn 0.5s;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
         }
         .close-btn {
             position: absolute;
             right: 1rem;
             top: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            color: #ff6b6b;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .close-btn:hover {
+            transform: rotate(90deg);
+            color: #ff0000;
         }
         .product-detail {
             display: flex;
@@ -90,37 +120,67 @@
             width: 300px;
             height: 300px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 10px;
+            border: 3px solid #ffd166;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .product-detail-info {
             flex: 1;
         }
+        .product-detail-info h2 {
+            color: #ff6b6b;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        .product-detail-info .price {
+            font-size: 1.5rem;
+            color: #06d6a0;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        .product-detail-info ul {
+            padding-left: 1.2rem;
+        }
+        .product-detail-info li {
+            margin-bottom: 0.5rem;
+            color: #5f6caf;
+        }
         .whatsapp-btn {
-            padding: 0.5rem 1rem;
-            background: #25D366;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-weight: bold;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             text-decoration: none;
             width: fit-content;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
         }
         .whatsapp-btn:hover {
-            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
         }
         
         /* Footer dan Social Media */
         footer {
-            background-color: #333;
+            background: linear-gradient(135deg, #5f6caf, #3a4a8a);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            border-top: 5px solid #ffd166;
+        }
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd166;
         }
         .social-media {
             display: flex;
@@ -129,33 +189,75 @@
             margin-top: 1rem;
         }
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: #444;
+            background: linear-gradient(135deg, #ffd166, #ff9e00);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .social-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
         .social-icon img {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
         }
         .copyright {
             margin-top: 1.5rem;
             font-size: 0.9rem;
-            color: #aaa;
+            color: #d8d8d8;
+        }
+        
+        /* Floating decoration elements */
+        .floating {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffd166, transparent 70%);
+            top: 10%;
+            left: 5%;
+        }
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff6b6b, transparent 70%);
+            bottom: 15%;
+            right: 8%;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 140px solid #06d6a0;
+            opacity: 0.1;
+            top: 60%;
+            left: 10%;
+            transform: rotate(45deg);
         }
     </style>
 </head>
 <body>
+    <!-- Floating decorative elements -->
+    <div class="floating circle-1"></div>
+    <div class="floating circle-2"></div>
+    <div class="floating triangle"></div>
+    
     <header>
         <h1>PREMICHI</h1>
-        <p>Laman Konten | Kategori</p>
+        <p>✨ Produk Keren dengan Harga Terjangkau ✨</p>
     </header>
     
     <div class="container">
@@ -166,7 +268,7 @@
                 <img src="p1.png" alt="Produk 1" class="product-image" onclick="openProductModal('produk1')">
                 <div class="product-info">
                     <div class="product-name">Netflix 1 Bulan 1U</div>
-                    <div class="product-category">Streaming</div>
+                    <div class="product-category">🎬 Streaming</div>
                 </div>
             </div>
             
@@ -175,7 +277,7 @@
                 <img src="p2.png" alt="Produk 2" class="product-image" onclick="openProductModal('produk2')">
                 <div class="product-info">
                     <div class="product-name">Vidio Platinum Private 1 Bulan</div>
-                    <div class="product-category">Streaming</div>
+                    <div class="product-category">🎥 Streaming</div>
                 </div>
             </div>
 
@@ -184,7 +286,7 @@
                 <img src="p3.png" alt="Produk 3" class="product-image" onclick="openProductModal('produk3')">
                 <div class="product-info">
                     <div class="product-name">Capcut 1 Bulan Private</div>
-                    <div class="product-category">Editing</div>
+                    <div class="product-category">✂️ Editing</div>
                 </div>
             </div>
             
@@ -213,7 +315,7 @@
             </a>
         </div>
         <div class="copyright">
-            &copy; 2023 Premichi. All Rights Reserved.
+            &copy; 2023 Premichi. All Rights Reserved. 💖
         </div>
     </footer>
     
@@ -224,39 +326,39 @@
             name: "Netflix 1 Bulan 1U",
             category: "Streaming",
             image: "p1.png",
-            description: "Langganan Netflix premium 1 bulan untuk 1 user. Garansi 30 hari.",
+            description: "🎉 Langganan Netflix premium 1 bulan untuk 1 user. Nikmati tontonan tanpa batas dengan kualitas terbaik!",
             price: "Rp 40.000",
             specs: [
-                "Tipe: Private Account",
-                "Durasi: 1 Bulan", 
-                "Garansi: 30 Hari",
-                "Support: 24/7"
+                "🎯 Tipe: Private Account",
+                "⏳ Durasi: 1 Bulan", 
+                "🛡️ Garansi: 30 Hari",
+                "🛟 Support: 24/7"
             ]
         },
         produk2: {
             name: "Vidio Platinum Private 1 Bulan",
             category: "Streaming",
             image: "p2.png",
-            description: "Langganan Vidio Platinum 1 bulan akun private. Bisa digunakan di semua device.",
+            description: "🌟 Langganan Vidio Platinum 1 bulan akun private. Bebas iklan dan bisa digunakan di semua device favoritmu!",
             price: "Rp 35.000",
             specs: [
-                "Tipe: Private Account",
-                "Fitur: Platinum (no ads)", 
-                "Durasi: 1 Bulan",
-                "Multi Device"
+                "🎯 Tipe: Private Account",
+                "✨ Fitur: Platinum (no ads)", 
+                "⏳ Durasi: 1 Bulan",
+                "📱 Multi Device"
             ]
         },
         produk3: {
             name: "Capcut 1 Bulan Private",
             category: "Editing",
             image: "p3.png",
-            description: "Akun Capcut Pro premium 1 bulan dengan semua fitur unlocked.",
+            description: "✂️ Akun Capcut Pro premium 1 bulan dengan semua fitur keren terbuka! Buat videomu semakin menarik!",
             price: "Rp 25.000",
             specs: [
-                "Tipe: Private Account",
-                "Akses: All Features", 
-                "Durasi: 1 Bulan",
-                "Garansi: 30 Hari"
+                "🎯 Tipe: Private Account",
+                "💎 Akses: All Features", 
+                "⏳ Durasi: 1 Bulan",
+                "🛡️ Garansi: 30 Hari"
             ]
         }
     };
@@ -273,7 +375,7 @@
         const modalContent = document.getElementById('modalContent');
         
         // Pesan default untuk WhatsApp
-        const whatsappMessage = `Halo, saya tertarik dengan produk ${product.name} (${product.price}) yang ada di website Premichi. Apakah masih tersedia?`;
+        const whatsappMessage = `Halo Premichi! 😊 Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
         const whatsappNumber = '6283128734012';
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
@@ -281,15 +383,15 @@
             <img src="${product.image}" alt="${product.name}" class="product-detail-image">
             <div class="product-detail-info">
                 <h2>${product.name}</h2>
-                <p class="product-category">${product.category}</p>
-                <p class="price">${product.price}</p>
+                <p class="product-category">🏷️ ${product.category}</p>
+                <p class="price">💲 ${product.price}</p>
                 <p>${product.description}</p>
-                <h3>Detail Produk:</h3>
+                <h3>✨ Detail Produk:</h3>
                 <ul>
                     ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
                 </ul>
                 <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
-                    Beli Sekarang
+                    📱 Beli Sekarang
                 </a>
             </div>
         `;
