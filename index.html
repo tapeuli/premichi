@@ -2,21 +2,24 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Premichi - Produk Kami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premichi - Toko digital produk premium dengan harga terjangkau. Netflix, Vidio, Capcut Pro dan banyak lagi.">
+    <meta name="keywords" content="netflix, vidio, capcut, streaming, premium account">
+    <meta name="theme-color" content="#ff6b6b">
+    <title>Premichi - Produk Digital Premium dengan Harga Terjangkau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Font yang mudah dibaca untuk semua perangkat */
+        /* Optimized CSS with critical styles first */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
-                        'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff9f0;
             line-height: 1.6;
-            -webkit-text-size-adjust: 100%;
         }
         
-        /* Header */
         header {
             background: linear-gradient(135deg, #ff6b6b, #ffa3a3, #ffd166);
             padding: 0;
@@ -24,7 +27,6 @@
             box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
             border-bottom: 5px solid #ffd166;
             height: 150px;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -36,7 +38,6 @@
             object-fit: cover;
         }
         
-        /* Container dan Grid Produk */
         .container {
             max-width: 1200px;
             margin: 1rem auto;
@@ -49,13 +50,96 @@
             gap: 1rem;
         }
         
+        /* Defer non-critical CSS */
+        .product-card, .modal, .footer-styles {
+            display: none;
+        }
+    </style>
+    <!-- Preload important images -->
+    <link rel="preload" href="premichi-bg.png" as="image">
+    <link rel="preload" href="p1.png" as="image">
+    <link rel="preload" href="p2.png" as="image">
+    <link rel="preload" href="p3.png" as="image">
+</head>
+<body>
+    <header>
+        <img src="premichi-bg.png" alt="Premichi - Produk Digital Premium" class="header-image" width="1200" height="200" loading="eager">
+    </header>
+    
+    <div class="container">
+        <h1 style="display:none;">Produk Premichi</h1>
+        <div class="product-grid">
+            <!-- Produk 1 -->
+            <div class="product-card">
+                <img src="p1.png" alt="Netflix 1 Bulan 1 User" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk1')">
+                <div class="product-info">
+                    <div class="product-name">Netflix 1 Bulan 1U</div>
+                    <div class="product-category">🎬 Streaming</div>
+                </div>
+            </div>
+            
+            <!-- Produk 2 -->
+            <div class="product-card">
+                <img src="p2.png" alt="Vidio Platinum Private 1 Bulan" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk2')">
+                <div class="product-info">
+                    <div class="product-name">Vidio Platinum Private 1 Bulan</div>
+                    <div class="product-category">🎥 Streaming</div>
+                </div>
+            </div>
+
+            <!-- Produk 3 -->
+            <div class="product-card">
+                <img src="p3.png" alt="Capcut 1 Bulan Private" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk3')">
+                <div class="product-info">
+                    <div class="product-name">Capcut 1 Bulan Private</div>
+                    <div class="product-category">✂️ Editing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <span class="close-btn" onclick="closeModal()" aria-label="Tutup modal">&times;</span>
+        <div class="modal-content">
+            <div class="product-detail" id="modalContent"></div>
+        </div>
+    </div>
+    
+    <footer class="footer-styles">
+        <h2>Ikuti Kami</h2>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@premichi_" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="TikTok Premichi">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok" width="22" height="22" loading="lazy">
+            </a>
+            <a href="https://www.instagram.com/premichi" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram Premichi">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="22" height="22" loading="lazy">
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; <span id="currentYear"></span> Premichi. All Rights Reserved. 💖
+        </div>
+    </footer>
+    
+    <!-- Load non-critical CSS -->
+    <link rel="stylesheet" href="non-critical.css" media="print" onload="this.media='all'">
+    
+    <script>
+    // Inline critical JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Load non-critical CSS
+        const nonCriticalCSS = `
         .product-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(255, 107, 107, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid #ffd166;
+            display: block;
         }
         
         .product-card:hover {
@@ -77,7 +161,7 @@
         }
         
         .product-name {
-            font-weight: 600; /* Sedikit lebih tebal untuk keterbacaan */
+            font-weight: 600;
             margin-bottom: 0.3rem;
             color: #ff6b6b;
             font-size: 0.95rem;
@@ -89,7 +173,6 @@
             font-weight: 600;
         }
         
-        /* Modal Detail Produk */
         .modal {
             display: none;
             position: fixed;
@@ -101,7 +184,6 @@
             background-color: rgba(255,214,102,0.9);
             backdrop-filter: blur(5px);
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
         }
         
         .modal-content {
@@ -179,23 +261,6 @@
             margin: 0.5rem 0;
         }
         
-        .product-detail-info p {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        
-        .product-detail-info ul {
-            padding-left: 1.2rem;
-            margin: 0.5rem 0;
-        }
-        
-        .product-detail-info li {
-            margin-bottom: 0.6rem;
-            color: #5f6caf;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
         .whatsapp-btn {
             padding: 0.8rem 1.2rem;
             background: linear-gradient(135deg, #25D366, #128C7E);
@@ -221,7 +286,6 @@
             max-width: 400px;
         }
         
-        /* Footer */
         footer {
             background: linear-gradient(135deg, #5f6caf, #3a4a8a);
             color: white;
@@ -229,9 +293,10 @@
             text-align: center;
             margin-top: 2rem;
             border-top: 4px solid #ffd166;
+            display: block;
         }
         
-        footer h3 {
+        footer h2 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
             color: #ffd166;
@@ -257,19 +322,12 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
         
-        .social-icon img {
-            width: 22px;
-            height: 22px;
-            filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
-        }
-        
         .copyright {
             margin-top: 1rem;
             font-size: 0.85rem;
             color: #d8d8d8;
         }
         
-        /* Responsive Design */
         @media (min-width: 768px) {
             header {
                 height: 200px;
@@ -314,72 +372,13 @@
                 left: auto;
                 right: auto;
             }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <img src="premichi-bg.png" alt="Premichi Header" class="header-image">
-    </header>
+        }`;
+        
+        const style = document.createElement('style');
+        style.textContent = nonCriticalCSS;
+        document.head.appendChild(style);
+    });
     
-    <div class="container">
-        <div class="product-grid">
-            <!-- Produk 1 -->
-            <div class="product-card">
-                <img src="p1.png" alt="Produk 1" class="product-image" onclick="openProductModal('produk1')">
-                <div class="product-info">
-                    <div class="product-name">Netflix 1 Bulan 1U</div>
-                    <div class="product-category">🎬 Streaming</div>
-                </div>
-            </div>
-            
-            <!-- Produk 2 -->
-            <div class="product-card">
-                <img src="p2.png" alt="Produk 2" class="product-image" onclick="openProductModal('produk2')">
-                <div class="product-info">
-                    <div class="product-name">Vidio Platinum Private 1 Bulan</div>
-                    <div class="product-category">🎥 Streaming</div>
-                </div>
-            </div>
-
-            <!-- Produk 3 -->
-            <div class="product-card">
-                <img src="p3.png" alt="Produk 3" class="product-image" onclick="openProductModal('produk3')">
-                <div class="product-info">
-                    <div class="product-name">Capcut 1 Bulan Private</div>
-                    <div class="product-category">✂️ Editing</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal untuk detail produk -->
-    <div id="productModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="product-detail" id="modalContent">
-                <!-- Konten akan diisi oleh JavaScript -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Footer dengan Social Media -->
-    <footer>
-        <h3>Ikuti Kami</h3>
-        <div class="social-media">
-            <a href="https://www.tiktok.com/@premichi_" class="social-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok">
-            </a>
-            <a href="https://www.instagram.com/premichi" class="social-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-            </a>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Premichi. All Rights Reserved. 💖
-        </div>
-    </footer>
-    
-    <script>
     // Data produk
     const products = {
         produk1: {
@@ -415,7 +414,7 @@
                 "Bebas nonton tayangan olahraga seperti: UCL, UEL, NBA, BRI Liga 1, Liga 2, Bein (1 & 3), WTA, IBL, dll",
                 "Vidio Original Series, seperti: Pertaruhan The Series, Married With Senior, dll",
                 "Serial Korea, seperti: Eve, Cleaning Up, Penthouse 1-3, Descendants Of The Sun, The World of The Married dll. Film Hollywood dan lokal, seperti: Chinese Zodiac, Spy Family, Spider-Man, John Wick, Kungfu Panda, The Raid, Keluarga Cemara, Gundala, Habibie Ainun. dll",
-                "TV International, seperti: Aljazeera, NewsAsia, NHK World Japan, DW English, SEA Today, ABC Australia, Fashion TV, dll",
+                "TV International, seperti: Aljazeera, NewsAsia, NHK World Japan, DW English, ABC Australia, Fashion TV, dll",
             ]
         },
         produk3: {
@@ -437,23 +436,19 @@
     // Fungsi untuk membuka modal produk
     function openProductModal(productId) {
         const product = products[productId];
-        if (!product) {
-            console.error("Produk tidak ditemukan:", productId);
-            return;
-        }
+        if (!product) return;
         
         const modal = document.getElementById('productModal');
         const modalContent = document.getElementById('modalContent');
         
-        // Pesan default untuk WhatsApp
+        // Pesan WhatsApp
         const whatsappMessage = `Halo kak! Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
-        const whatsappNumber = '6283161501886';
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/6283161501886?text=${encodeURIComponent(whatsappMessage)}`;
         
         modalContent.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-detail-image">
+            <img src="${product.image}" alt="${product.name}" class="product-detail-image" width="250" height="250" loading="lazy">
             <div class="product-detail-info">
-                <h2>${product.name}</h2>
+                <h2 id="modalTitle">${product.name}</h2>
                 <p class="product-category">🏷️ ${product.category}</p>
                 <p class="price">💲 ${product.price}</p>
                 <p>${product.description}</p>
@@ -461,34 +456,45 @@
                 <ul>
                     ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
                 </ul>
-                <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
+                <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
                     📱 Beli Sekarang
                 </a>
             </div>
         `;
         
         modal.style.display = "block";
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = "hidden";
+        document.addEventListener('keydown', handleEscapeKey);
     }
     
     // Fungsi untuk menutup modal
     function closeModal() {
-        document.getElementById('productModal').style.display = "none";
+        const modal = document.getElementById('productModal');
+        modal.style.display = "none";
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = "auto";
+        document.removeEventListener('keydown', handleEscapeKey);
+    }
+    
+    function handleEscapeKey(event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
     }
     
     // Tutup modal ketika klik di luar konten modal
     window.onclick = function(event) {
         const modal = document.getElementById('productModal');
-        if (event.target == modal) {
+        if (event.target === modal) {
             closeModal();
         }
-    }
+    };
     
     // Handle touch events untuk mobile
     document.addEventListener('touchstart', function(event) {
         const modal = document.getElementById('productModal');
-        if (modal.style.display === "block" && !modal.contains(event.target) {
+        if (modal.style.display === "block" && !modal.contains(event.target)) {
             closeModal();
         }
     }, {passive: true});
