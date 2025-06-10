@@ -7,6 +7,15 @@
     <meta name="keywords" content="netflix, vidio, capcut, chatgpt, streaming, premium account, langganan murah, akun premium">
     <meta name="theme-color" content="#ff6b6b">
     <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Premichi - Produk Digital Premium dengan Harga Terjangkau">
+    <meta property="og:description" content="Premichi - Toko digital produk premium dengan harga terjangkau. Netflix, Vidio, Capcut Pro, ChatGPT dan banyak lagi.">
+    <meta property="og:image" content="https://premichi.com/premichi-bg.png">
+    <meta property="og:url" content="https://premichi.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="canonical" href="https://premichi.com/">
     <title>Premichi - Produk Digital Premium dengan Harga Terjangkau</title>
     
@@ -23,6 +32,21 @@
     <link rel="preload" href="p3.png" as="image" type="image/png">
     <link rel="preload" href="p4.png" as="image" type="image/png">
     
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Premichi",
+      "url": "https://premichi.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://premichi.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
     <!-- Inline critical CSS -->
     <style>
         :root {
@@ -32,6 +56,7 @@
             --bg: #fff9f0;
             --text: #333;
             --light-text: #777;
+            --dark-bg: #3a4a8a;
         }
         
         * {
@@ -87,12 +112,13 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(255, 107, 107, 0.1);
             border: 2px solid var(--secondary);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
         
         .product-card:focus-within, 
         .product-card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
         }
         
         .product-image {
@@ -100,6 +126,7 @@
             height: 120px;
             object-fit: cover;
             border-bottom: 2px solid var(--secondary);
+            cursor: pointer;
         }
         
         .product-info {
@@ -120,9 +147,184 @@
             font-weight: 600;
         }
         
-        /* Hidden elements */
-        .modal, [style*="display:none"] {
-            display: none !important;
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,214,102,0.9);
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--bg);
+            margin: 2% auto;
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 95%;
+            position: relative;
+            border: 3px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+            animation: bounceIn 0.4s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .close-btn {
+            position: fixed;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: bold;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 101;
+            border: none;
+        }
+        
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .product-detail-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .product-detail-info {
+            flex: 1;
+            position: relative;
+            padding-bottom: 70px;
+        }
+        
+        .product-detail-info h2 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .product-detail-info .price {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        
+        .whatsapp-btn {
+            padding: 0.8rem 1.2rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin: 1rem auto 0;
+            text-decoration: none;
+            width: 90%;
+            font-size: 1rem;
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 20px;
+            left: 5%;
+            right: 5%;
+            max-width: 400px;
+        }
+        
+        .whatsapp-btn:hover,
+        .whatsapp-btn:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(37, 211, 102, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark-bg), #5f6caf);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        footer h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), #ff9e00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .social-icon:hover,
+        .social-icon:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #d8d8d8;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         
         /* Skip to content link for accessibility */
@@ -139,6 +341,52 @@
         
         .skip-link:focus {
             top: 0;
+        }
+        
+        @media (min-width: 768px) {
+            header {
+                height: 200px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-name {
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                width: 80%;
+                padding: 2rem;
+            }
+            
+            .product-detail {
+                flex-direction: row;
+            }
+            
+            .product-detail-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .product-detail-info h2 {
+                font-size: 1.7rem;
+            }
+            
+            .whatsapp-btn {
+                position: sticky;
+                bottom: 0;
+                width: auto;
+                margin: 1.5rem 0 0;
+                left: auto;
+                right: auto;
+            }
         }
     </style>
     
@@ -163,7 +411,7 @@
     <a href="#main-content" class="skip-link">Skip to content</a>
     
     <header>
-        <img src="premichi-bg.png" alt="Premichi - Produk Digital Premium" class="header-image" width="1200" height="200" loading="eager">
+        <img src="premichi-bg.png" alt="Premichi - Produk Digital Premium" class="header-image" width="1200" height="200" loading="eager" fetchpriority="high">
     </header>
     
     <main id="main-content" class="container">
@@ -205,10 +453,10 @@
     </main>
     
     <!-- Modal -->
-    <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" tabindex="-1">
         <button class="close-btn" onclick="closeModal()" aria-label="Tutup modal">&times;</button>
         <div class="modal-content">
-            <div class="product-detail" id="modalContent"></div>
+            <div class="product-detail" id="modalContent" aria-live="polite"></div>
         </div>
     </div>
     
@@ -227,354 +475,161 @@
         </div>
     </footer>
     
-    <!-- Load non-critical CSS asynchronously -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Set current year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Load non-critical CSS
-        const style = document.createElement('style');
-        style.textContent = `
-        .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card:hover {
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
-        }
-        .product-image {
-            cursor: pointer;
-        }
-        .modal {
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255,214,102,0.9);
-            backdrop-filter: blur(5px);
-            overflow-y: auto;
-        }
-        .modal-content {
-            background-color: var(--bg);
-            margin: 2% auto;
-            padding: 1.5rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 95%;
-            position: relative;
-            border: 3px solid var(--primary);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
-            animation: bounceIn 0.4s;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0.95); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .close-btn {
-            position: fixed;
-            right: 1rem;
-            top: 1rem;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--primary);
-            font-weight: bold;
-            background: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 101;
-            border: none;
-        }
-        .product-detail {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        .product-detail-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid var(--secondary);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        .product-detail-info {
-            flex: 1;
-            position: relative;
-            padding-bottom: 70px;
-        }
-        .product-detail-info h2 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        .product-detail-info .price {
-            font-size: 1.3rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }
-        .whatsapp-btn {
-            padding: 0.8rem 1.2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            margin: 1rem auto 0;
-            text-decoration: none;
-            width: 90%;
-            font-size: 1rem;
-            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            position: fixed;
-            bottom: 20px;
-            left: 5%;
-            right: 5%;
-            max-width: 400px;
-        }
-        .whatsapp-btn:hover,
-        .whatsapp-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(37, 211, 102, 0.4);
-        }
-        footer {
-            background: linear-gradient(135deg, #5f6caf, #3a4a8a);
-            color: white;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            margin-top: 2rem;
-            border-top: 4px solid var(--secondary);
-        }
-        footer h2 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--secondary);
-            font-weight: 600;
-        }
-        .social-media {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
-        .social-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary), #ff9e00);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-        .social-icon:hover,
-        .social-icon:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-        .copyright {
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: #d8d8d8;
-        }
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        @media (min-width: 768px) {
-            header {
-                height: 200px;
+        // Product data
+        const products = {
+            produk1: {
+                name: "Netflix 1 Bulan 1U",
+                category: "Streaming",
+                image: "p1.png",
+                description: "🎉 Langganan Netflix premium 1 bulan untuk 1 user. Nikmati tontonan tanpa batas dengan kualitas terbaik!",
+                price: "Rp 40.000",
+                specs: [
+                    "🎯 Tipe: Sharing Account",
+                    "⏳ Durasi: 27–28 hari", 
+                    "⚠️ Wajib kirim format device & bukti login (tanpa crop) saat order. Toleransi max 3x24 jam",
+                    "Tidak bisa pindah device, kecuali rusak",
+                    "Akun wiped sisa durasi ≤14 hari: tidak ada refund",
+                    "Jika muncul notif household, hubungi seller. Jangan logout! Logout = denda Rp2.000",
+                    "Bisa digunakan di luar negeri",
+                    "Tidak boleh dipakai di aplikasi rave",
+                    "Jika terdeteksi login lebih dari 1, diberi 1x kesempatan login ulang. Melanggar = akun ditarik, no refund",
+                ]
+            },
+            produk2: {
+                name: "Vidio Platinum Private 1 Bulan",
+                category: "Streaming",
+                image: "p2.png",
+                description: "🌟 Langganan Vidio Platinum 1 bulan akun private. Bebas iklan dan bisa digunakan di semua device favoritmu!",
+                price: "Rp 35.000",
+                specs: [
+                    "🎯 Private, log in max 1 device",
+                    "🖥️ Bisa log in di IOS/ANDROID/LAPTOP/TV",
+                    "⏳ Durasi: 1 Bulan",
+                    "🛡️ Garansi: 30 Hari",
+                    "💎 VIP Fitur: Nonton original series & konten sport lainnya",
+                    "Bebas nonton tayangan olahraga seperti: UCL, UEL, NBA, BRI Liga 1, Liga 2, Bein (1 & 3), WTA, IBL, dll",
+                    "Vidio Original Series, seperti: Pertaruhan The Series, Married With Senior, dll",
+                    "Serial Korea, seperti: Eve, Cleaning Up, Penthouse 1-3, Descendants Of The Sun, The World of The Married dll. Film Hollywood dan lokal, seperti: Chinese Zodiac, Spy Family, Spider-Man, John Wick, Kungfu Panda, The Raid, Keluarga Cemara, Gundala, Habibie Ainun. dll",
+                    "TV International, seperti: Aljazeera, NewsAsia, NHK World Japan, DW English, ABC Australia, Fashion TV, dll",
+                ]
+            },
+            produk3: {
+                name: "Capcut 1 Bulan Private",
+                category: "Editing",
+                image: "p3.png",
+                description: "✂️ Akun Capcut Pro premium 1 bulan dengan semua fitur keren terbuka! Buat videomu semakin menarik!",
+                price: "Rp 25.000",
+                specs: [
+                    "🧑‍🧑‍🧒‍🧒 Private",
+                    "🖥️ Bisa Log-in semua device (MAX 3 DEVICE)",
+                    "💎 VIP fitur: Unlock all pro templates for unlimited times, Space 100GB, Ad free", 
+                    "⏳ Durasi: 1 Bulan",
+                    "🛡️ Garansi: 30 Hari"
+                ]
+            },
+            produk4: {
+                name: "ChatGPT 1 Bulan Private",
+                category: "Education",
+                image: "p4.png",
+                description: "🤖 Akses ChatGPT Plus selama 1 bulan dengan akun private. Nikmati fitur GPT-4 dan banyak lagi!",
+                price: "Rp 110.000",
+                specs: [
+                    "🧑‍🧑‍🧒‍🧒 Private",
+                    "🖥️ Hanya bisa log in di 5 device",
+                    "⏳ Durasi: 1 Bulan",
+                    "🛡️ Garansi: 30 Hari",
+                    "NOTES: Garansi untuk backfree saja berupa replacement/refund. Tidak ada garansi jika disable/deactive"
+                ]
             }
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 1.5rem;
+        };
+        
+        // Modal functions
+        function openProductModal(productId) {
+            const product = products[productId];
+            if (!product) return;
+            
+            const modal = document.getElementById('productModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            const whatsappMessage = `Halo kak! Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
+            const whatsappUrl = `https://wa.me/6283161501886?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            modalContent.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-detail-image" width="250" height="250" loading="lazy">
+                <div class="product-detail-info">
+                    <h2 id="modalTitle">${product.name}</h2>
+                    <p class="product-category">🏷️ ${product.category}</p>
+                    <p class="price">💲 ${product.price}</p>
+                    <p id="modalDesc">${product.description}</p>
+                    <h3>✨ Detail Produk:</h3>
+                    <ul>
+                        ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
+                    </ul>
+                    <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                        📱 Beli Sekarang
+                    </a>
+                </div>
+            `;
+            
+            modal.style.display = "block";
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = "hidden";
+            document.addEventListener('keydown', handleEscapeKey);
+            
+            // Focus trap for keyboard users
+            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            firstElement.focus();
+            
+            modal.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = "none";
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = "auto";
+            document.removeEventListener('keydown', handleEscapeKey);
+        }
+        
+        function handleEscapeKey(event) {
+            if (event.key === 'Escape') closeModal();
+        }
+        
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('productModal')) {
+                closeModal();
             }
-            .product-image {
-                height: 150px;
+        };
+        
+        document.addEventListener('touchstart', function(event) {
+            const modal = document.getElementById('productModal');
+            if (modal.style.display === "block" && !modal.contains(event.target)) {
+                closeModal();
             }
-            .product-name {
-                font-size: 1rem;
-            }
-            .modal-content {
-                width: 80%;
-                padding: 2rem;
-            }
-            .product-detail {
-                flex-direction: row;
-            }
-            .product-detail-image {
-                width: 250px;
-                height: 250px;
-            }
-            .product-detail-info h2 {
-                font-size: 1.7rem;
-            }
-            .whatsapp-btn {
-                position: sticky;
-                bottom: 0;
-                width: auto;
-                margin: 1.5rem 0 0;
-                left: auto;
-                right: auto;
-            }
-        }`;
-        document.head.appendChild(style);
+        }, {passive: true});
     });
-    
-    <script>
-    // Product data
-    const products = {
-        produk1: {
-            name: "Netflix 1 Bulan 1U",
-            category: "Streaming",
-            image: "p1.png",
-            description: "🎉 Langganan Netflix premium 1 bulan untuk 1 user. Nikmati tontonan tanpa batas dengan kualitas terbaik!",
-            price: "Rp 40.000",
-            specs: [
-                "🎯 Tipe: Sharing Account",
-                "⏳ Durasi: 27–28 hari", 
-                "⚠️ Wajib kirim format device & bukti login (tanpa crop) saat order. Toleransi max 3x24 jam",
-                "Tidak bisa pindah device, kecuali rusak",
-                "Akun wiped sisa durasi ≤14 hari: tidak ada refund",
-                "Jika muncul notif household, hubungi seller. Jangan logout! Logout = denda Rp2.000",
-                "Bisa digunakan di luar negeri",
-                "Tidak boleh dipakai di aplikasi rave",
-                "Jika terdeteksi login lebih dari 1, diberi 1x kesempatan login ulang. Melanggar = akun ditarik, no refund",
-            ]
-        },
-        produk2: {
-            name: "Vidio Platinum Private 1 Bulan",
-            category: "Streaming",
-            image: "p2.png",
-            description: "🌟 Langganan Vidio Platinum 1 bulan akun private. Bebas iklan dan bisa digunakan di semua device favoritmu!",
-            price: "Rp 35.000",
-            specs: [
-                "🎯 Private, log in max 1 device",
-                "🖥️ Bisa log in di IOS/ANDROID/LAPTOP/TV",
-                "⏳ Durasi: 1 Bulan",
-                "🛡️ Garansi: 30 Hari",
-                "💎 VIP Fitur: Nonton original series & konten sport lainnya",
-                "Bebas nonton tayangan olahraga seperti: UCL, UEL, NBA, BRI Liga 1, Liga 2, Bein (1 & 3), WTA, IBL, dll",
-                "Vidio Original Series, seperti: Pertaruhan The Series, Married With Senior, dll",
-                "Serial Korea, seperti: Eve, Cleaning Up, Penthouse 1-3, Descendants Of The Sun, The World of The Married dll. Film Hollywood dan lokal, seperti: Chinese Zodiac, Spy Family, Spider-Man, John Wick, Kungfu Panda, The Raid, Keluarga Cemara, Gundala, Habibie Ainun. dll",
-                "TV International, seperti: Aljazeera, NewsAsia, NHK World Japan, DW English, ABC Australia, Fashion TV, dll",
-            ]
-        },
-        produk3: {
-            name: "Capcut 1 Bulan Private",
-            category: "Editing",
-            image: "p3.png",
-            description: "✂️ Akun Capcut Pro premium 1 bulan dengan semua fitur keren terbuka! Buat videomu semakin menarik!",
-            price: "Rp 25.000",
-            specs: [
-                "🧑‍🧑‍🧒‍🧒 Private",
-                "🖥️ Bisa Log-in semua device (MAX 3 DEVICE)",
-                "💎 VIP fitur: Unlock all pro templates for unlimited times, Space 100GB, Ad free", 
-                "⏳ Durasi: 1 Bulan",
-                "🛡️ Garansi: 30 Hari"
-            ]
-        },
-        produk4: {
-            name: "ChatGPT 1 Bulan Private",
-            category: "Education",
-            image: "p4.png",
-            description: "🤖 Akses ChatGPT Plus selama 1 bulan dengan akun private. Nikmati fitur GPT-4 dan banyak lagi!",
-            price: "Rp 110.000",
-            specs: [
-                "🧑‍🧑‍🧒‍🧒 Private",
-                "🖥️ Hanya bisa log in di 5 device",
-                "⏳ Durasi: 1 Bulan",
-                "🛡️ Garansi: 30 Hari",
-                "NOTES: Garansi untuk backfree saja berupa replacement/refund. Tidak ada garansi jika disable/deactive"
-            ]
-        }
-    };
-    
-    // Modal functions
-    function openProductModal(productId) {
-        const product = products[productId];
-        if (!product) return;
-        
-        const modal = document.getElementById('productModal');
-        const modalContent = document.getElementById('modalContent');
-        
-        const whatsappMessage = `Halo kak! Saya mau beli ${product.name} (${product.price}) yang ada di website. Apakah masih tersedia?`;
-        const whatsappUrl = `https://wa.me/6283161501886?text=${encodeURIComponent(whatsappMessage)}`;
-        
-        modalContent.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-detail-image" width="250" height="250" loading="lazy">
-            <div class="product-detail-info">
-                <h2 id="modalTitle">${product.name}</h2>
-                <p class="product-category">🏷️ ${product.category}</p>
-                <p class="price">💲 ${product.price}</p>
-                <p>${product.description}</p>
-                <h3>✨ Detail Produk:</h3>
-                <ul>
-                    ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
-                </ul>
-                <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                    📱 Beli Sekarang
-                </a>
-            </div>
-        `;
-        
-        modal.style.display = "block";
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = "hidden";
-        document.addEventListener('keydown', handleEscapeKey);
-        
-        // Focus on modal for keyboard users
-        modal.focus();
-    }
-    
-    function closeModal() {
-        const modal = document.getElementById('productModal');
-        modal.style.display = "none";
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = "auto";
-        document.removeEventListener('keydown', handleEscapeKey);
-    }
-    
-    function handleEscapeKey(event) {
-        if (event.key === 'Escape') closeModal();
-    }
-    
-    window.onclick = function(event) {
-        if (event.target === document.getElementById('productModal')) {
-            closeModal();
-        }
-    };
-    
-    document.addEventListener('touchstart', function(event) {
-        const modal = document.getElementById('productModal');
-        if (modal.style.display === "block" && !modal.contains(event.target)) {
-            closeModal();
-        }
-    }, {passive: true});
     </script>
 </body>
 </html>
