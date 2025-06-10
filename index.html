@@ -4,48 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premichi - Toko digital produk premium dengan harga terjangkau. Netflix, Vidio, Capcut Pro, ChatGPT dan banyak lagi.">
-    <meta name="keywords" content="netflix, vidio, capcut, chatgpt, streaming, premium account">
+    <meta name="keywords" content="netflix, vidio, capcut, chatgpt, streaming, premium account, langganan murah, akun premium">
     <meta name="theme-color" content="#ff6b6b">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://premichi.com/">
     <title>Premichi - Produk Digital Premium dengan Harga Terjangkau</title>
     
-    <!-- Google Tag Manager -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YQSBS5F987');
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQSBS5F987"></script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Preload resources -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <link rel="preload" href="premichi-bg.png" as="image">
-    <link rel="preload" href="p1.png" as="image">
-    <link rel="preload" href="p2.png" as="image">
-    <link rel="preload" href="p3.png" as="image">
-    <link rel="preload" href="p4.png" as="image">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="premichi-bg.png" as="image" type="image/png">
+    <link rel="preload" href="p1.png" as="image" type="image/png">
+    <link rel="preload" href="p2.png" as="image" type="image/png">
+    <link rel="preload" href="p3.png" as="image" type="image/png">
+    <link rel="preload" href="p4.png" as="image" type="image/png">
     
+    <!-- Inline critical CSS -->
     <style>
-        /* Critical CSS */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #ffd166;
+            --accent: #06d6a0;
+            --bg: #fff9f0;
+            --text: #333;
+            --light-text: #777;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #fff9f0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         header {
-            background: linear-gradient(135deg, #ff6b6b, #ffa3a3, #ffd166);
+            background: linear-gradient(135deg, var(--primary), #ffa3a3, var(--secondary));
             padding: 0;
             text-align: center;
             box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
-            border-bottom: 5px solid #ffd166;
+            border-bottom: 5px solid var(--secondary);
             height: 150px;
             display: flex;
             align-items: center;
@@ -68,6 +78,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1rem;
+            margin: 1.5rem 0;
         }
         
         .product-card {
@@ -75,25 +86,31 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(255, 107, 107, 0.1);
-            border: 2px solid #ffd166;
+            border: 2px solid var(--secondary);
+            transition: transform 0.2s ease;
+        }
+        
+        .product-card:focus-within, 
+        .product-card:hover {
+            transform: translateY(-3px);
         }
         
         .product-image {
             width: 100%;
             height: 120px;
             object-fit: cover;
-            border-bottom: 2px solid #ffd166;
+            border-bottom: 2px solid var(--secondary);
         }
         
         .product-info {
             padding: 0.8rem;
-            background: linear-gradient(to bottom, #ffffff, #fff9f0);
+            background: linear-gradient(to bottom, #ffffff, var(--bg));
         }
         
         .product-name {
             font-weight: 600;
             margin-bottom: 0.3rem;
-            color: #ff6b6b;
+            color: var(--primary);
             font-size: 0.95rem;
         }
         
@@ -107,57 +124,89 @@
         .modal, [style*="display:none"] {
             display: none !important;
         }
+        
+        /* Skip to content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
     </style>
+    
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','G-YQSBS5F987');
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Load non-critical CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-YQSBS5F987" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <header>
         <img src="premichi-bg.png" alt="Premichi - Produk Digital Premium" class="header-image" width="1200" height="200" loading="eager">
     </header>
     
-    <div class="container">
-        <h1 hidden>Produk Premichi</h1>
+    <main id="main-content" class="container">
+        <h1 class="visually-hidden">Produk Premichi</h1>
         <div class="product-grid">
             <!-- Product cards -->
-            <div class="product-card">
+            <article class="product-card">
                 <img src="p1.png" alt="Netflix 1 Bulan 1 User" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk1')">
                 <div class="product-info">
-                    <div class="product-name">Netflix 1 Bulan 1U</div>
-                    <div class="product-category">🎬 Streaming</div>
+                    <h2 class="product-name">Netflix 1 Bulan 1U</h2>
+                    <p class="product-category">🎬 Streaming</p>
                 </div>
-            </div>
+            </article>
             
-            <div class="product-card">
+            <article class="product-card">
                 <img src="p2.png" alt="Vidio Platinum Private 1 Bulan" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk2')">
                 <div class="product-info">
-                    <div class="product-name">Vidio Platinum Private 1 Bulan</div>
-                    <div class="product-category">🎥 Streaming</div>
+                    <h2 class="product-name">Vidio Platinum Private 1 Bulan</h2>
+                    <p class="product-category">🎥 Streaming</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card">
+            <article class="product-card">
                 <img src="p3.png" alt="Capcut 1 Bulan Private" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk3')">
                 <div class="product-info">
-                    <div class="product-name">Capcut 1 Bulan Private</div>
-                    <div class="product-category">✂️ Editing</div>
+                    <h2 class="product-name">Capcut 1 Bulan Private</h2>
+                    <p class="product-category">✂️ Editing</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card">
+            <article class="product-card">
                 <img src="p4.png" alt="ChatGPT 1 Bulan Private" class="product-image" width="200" height="150" loading="lazy" onclick="openProductModal('produk4')">
                 <div class="product-info">
-                    <div class="product-name">ChatGPT 1 Bulan Private</div>
-                    <div class="product-category">🤖 Education</div>
+                    <h2 class="product-name">ChatGPT 1 Bulan Private</h2>
+                    <p class="product-category">🤖 Education</p>
                 </div>
-            </div>
+            </article>
         </div>
-    </div>
+    </main>
     
     <!-- Modal -->
-    <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-        <span class="close-btn" onclick="closeModal()" aria-label="Tutup modal">&times;</span>
+    <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="close-btn" onclick="closeModal()" aria-label="Tutup modal">&times;</button>
         <div class="modal-content">
             <div class="product-detail" id="modalContent"></div>
         </div>
@@ -178,7 +227,7 @@
         </div>
     </footer>
     
-    <!-- Non-critical CSS -->
+    <!-- Load non-critical CSS asynchronously -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Set current year
@@ -191,7 +240,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .product-card:hover {
-            transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
         }
         .product-image {
@@ -209,14 +257,14 @@
             overflow-y: auto;
         }
         .modal-content {
-            background-color: #fff9f0;
+            background-color: var(--bg);
             margin: 2% auto;
             padding: 1.5rem;
             border-radius: 12px;
             width: 90%;
             max-width: 95%;
             position: relative;
-            border: 3px solid #ff6b6b;
+            border: 3px solid var(--primary);
             box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
             animation: bounceIn 0.4s;
             max-height: 90vh;
@@ -232,7 +280,7 @@
             top: 1rem;
             font-size: 1.8rem;
             cursor: pointer;
-            color: #ff6b6b;
+            color: var(--primary);
             font-weight: bold;
             background: white;
             width: 40px;
@@ -243,6 +291,7 @@
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 101;
+            border: none;
         }
         .product-detail {
             display: flex;
@@ -254,7 +303,7 @@
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
-            border: 2px solid #ffd166;
+            border: 2px solid var(--secondary);
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         .product-detail-info {
@@ -263,7 +312,7 @@
             padding-bottom: 70px;
         }
         .product-detail-info h2 {
-            color: #ff6b6b;
+            color: var(--primary);
             margin-top: 0;
             font-size: 1.5rem;
             font-weight: 600;
@@ -271,7 +320,7 @@
         }
         .product-detail-info .price {
             font-size: 1.3rem;
-            color: #06d6a0;
+            color: var(--accent);
             font-weight: 700;
             margin: 0.5rem 0;
         }
@@ -299,18 +348,23 @@
             right: 5%;
             max-width: 400px;
         }
+        .whatsapp-btn:hover,
+        .whatsapp-btn:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(37, 211, 102, 0.4);
+        }
         footer {
             background: linear-gradient(135deg, #5f6caf, #3a4a8a);
             color: white;
             padding: 1.5rem 1rem;
             text-align: center;
             margin-top: 2rem;
-            border-top: 4px solid #ffd166;
+            border-top: 4px solid var(--secondary);
         }
         footer h2 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
-            color: #ffd166;
+            color: var(--secondary);
             font-weight: 600;
         }
         .social-media {
@@ -323,17 +377,33 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffd166, #ff9e00);
+            background: linear-gradient(135deg, var(--secondary), #ff9e00);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
+        .social-icon:hover,
+        .social-icon:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
         .copyright {
             margin-top: 1rem;
             font-size: 0.85rem;
             color: #d8d8d8;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         @media (min-width: 768px) {
             header {
@@ -475,6 +545,9 @@
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = "hidden";
         document.addEventListener('keydown', handleEscapeKey);
+        
+        // Focus on modal for keyboard users
+        modal.focus();
     }
     
     function closeModal() {
